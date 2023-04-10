@@ -30,13 +30,16 @@ pipeline {
             }
         }
         stage('Build Packges') {
+            parallel {
                 stage('Test App') {
                     steps {
                         sh "helm package rsvpapp"
                     }
                 }
+            }
         }
         stage('Push To Repo') {
+            parallel {
                 stage('Test App') {
                     steps {
                         withCredentials([usernamePassword(credentialsId: HELM_REPOSITORY_CREDENTIALS, passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
@@ -44,6 +47,7 @@ pipeline {
                         }
                     }
                 }
+            }
         }
     }
 }
