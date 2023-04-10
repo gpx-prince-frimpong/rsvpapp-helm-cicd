@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Checkout SCM') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[credentialsId: 'GITHUB', url: 'https://github.com/gpx-prince-frimpong/rsvpapp-helm-cicd.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[credentialsId: 'payex', url: 'https://github.com/gpx-prince-frimpong/rsvpapp-helm-cicd.git']]])
             }
         }
         stage('Build Packges') {
